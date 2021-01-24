@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-photocloud-dev-104010-authRole",
+      "UnauthRoleArn": "arn:aws:iam::179212316558:role/amplify-photocloud-dev-104010-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::179212316558:role/amplify-photocloud-dev-104010-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-photocloud-dev-104010-deployment",
+      "UnauthRoleName": "amplify-photocloud-dev-104010-unauthRole",
+      "StackName": "amplify-photocloud-dev-104010",
+      "StackId": "arn:aws:cloudformation:eu-west-1:179212316558:stack/amplify-photocloud-dev-104010/2c4fbfc0-5003-11eb-9349-06f99181de63",
+      "AmplifyAppId": "d3893mjmtlobs4"
+    },
+    "categories": {
+      "auth": {
+        "photocloud900ea1b1": {}
+      }
+    }
+  }
+}
