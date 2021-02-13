@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "@aws-amplify/ui-vue": "^0.2.32",
+    "autoprefixer": "^9",
     "aws-amplify": "^3.3.13",
     "core-js": "^3.6.5",
+    "postcss": "^7",
     "uuid": "^8.3.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -22,7 +24,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "sass-loader": "^10.1.0",
-    "vue-cli-plugin-tailwind": "~2.0.1",
+    "vue-cli-plugin-tailwind": "~2.0.5",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

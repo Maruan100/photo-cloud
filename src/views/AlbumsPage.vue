@@ -1,14 +1,27 @@
 <template>
 <div>
-<h2>Albums page</h2>
+<CreateAlbum></CreateAlbum>
+<Albums></Albums>
 </div>
-</template> 
+</template>
 
 <script>
-
+import Albums from '../components/Albums.vue';
+import CreateAlbum from '../components/CreateAlbum.vue';
 export default {
   name: "AlbumsPage",
   components: {
+    Albums,
+    CreateAlbum
+  },
+  data() {
+    return {
+    };
+  },
+  computed: {
+
+  },
+  methods: {
   },
 };
 </script>
