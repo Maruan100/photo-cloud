@@ -3,12 +3,12 @@
     <div @click="goBack" class="goBack">
       <p><i class="fas fa-arrow-left"></i>Return</p>
     </div>
-    <FileSelector></FileSelector>
+    <FileSelector @finished="getPhotos"></FileSelector>
     <div class="flex-container">
       <PhotoCard
-        :photo="photo"
         v-for="photo in photos"
         :key="photo.id"
+        :photo="photo"
       ></PhotoCard>
     </div>
   </div>
@@ -23,7 +23,7 @@ export default {
   name: "AlbumDetailPage",
   components: {
     PhotoCard,
-    FileSelector
+    FileSelector,
   },
   data() {
     return {
@@ -46,20 +46,6 @@ export default {
     }),
     goBack() {
       this.$router.push({ name: "AlbumsPage" });
-    },
-    async onFileChange(file) {
-      if (!file.target || !file.target.files[0]) {
-        return;
-      }
-      try {
-        this.createPhoto({
-          file: file.target.files[0],
-          id: this.id,
-        });
-        this.getPhotos();
-      } catch (error) {
-        console.log("error create photo", error);
-      }
     },
     async getPhotos() {
       const album = await this.getAlbum(this.id);

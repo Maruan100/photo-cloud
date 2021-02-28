@@ -9,8 +9,8 @@
       <h4 class="card__container__text">
         <b></b>
       </h4>
-      <p class="card__container__subtext">Interior Designer</p>
-    </div>
+      <p class="card__container__subtext">{{ this.photo.createdAt }}</p>
+    </div> 
   </div>
 </template>
 
@@ -24,11 +24,5 @@ export default {
       default: null,
     },
   },
-  data() {
-    return {};
-  },
-  async mounted() {
-  },
-  computed: {},
 };
 </script>

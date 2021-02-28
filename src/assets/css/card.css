@@ -31,4 +31,5 @@ img {
 
 amplify-s3-image {
   --width: 250px;
+  --height: 200px;
 }

@@ -18,7 +18,7 @@
       <h4 class="card__container__text">
         <b>{{ album.name }}</b>
       </h4>
-      <p class="card__container__subtext">Interior Designer</p>
+      <p class="card__container__subtext">Photos: {{ this.album.photos.items.length }}</p>
     </div>
   </div>
 </template>

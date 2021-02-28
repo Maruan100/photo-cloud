@@ -1,6 +1,9 @@
 <template>
   <div class="file-selector">
-    <div class="file-selector__drop"  :style="selectedFile ? 'border: initial' : null" >
+    <div
+      class="file-selector__drop"
+      :style="selectedFile ? 'border: initial' : null"
+    >
       <div
         class="file-selector__drop--icon"
         ref="drag"
@@ -27,10 +30,26 @@
         <img v-show="selectedFile" class="updated-file" :src="selectedFile" />
       </div>
     </div>
+    <div v-if="selectedFile" class="file-selector__btn">
+      <input
+        @click="removeFile"
+        type="submit"
+        value="Remove"
+        class="btn solid btn--red"
+      />
+      <input
+        @click="uploadFile"
+        type="submit"
+        value="Upload"
+        class="btn solid"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "FileSelector",
   data() {
@@ -38,6 +57,7 @@ export default {
       mime_type: null,
       selectedFile: null,
       isOver: null,
+      image: null,
     };
   },
   mounted() {
@@ -57,17 +77,22 @@ export default {
         this.mime_type === "image/gif"
       );
     },
+    id() {
+      return this.$route.params.id;
+    },
   },
   methods: {
+    ...mapActions({
+      getAlbum: "getAlbum",
+      createPhoto: "createPhoto",
+    }),
     onGetFile(e) {
-      const image = e.dataTransfer
-        ? e.dataTransfer.files[0]
-        : e.target.files[0];
+      this.image = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
-      this.mime_type = image.type;
+      this.mime_type = this.image.type;
 
       if (this.isValidImg) {
-        this.renderImage(image);
+        this.renderImage(this.image);
       } else {
         this.removeFile();
       }
@@ -84,10 +109,17 @@ export default {
       }
     },
     removeFile() {
-      this.$refs.cropper.destroy();
       this.$refs.fileInput.value = "";
-      this.image = "";
+      this.selectedFile = "";
       this.isOver = false;
+    },
+    async uploadFile() {
+      await this.createPhoto({
+        file: this.image,
+        id: this.id,
+      });
+      this.removeFile();
+      this.$emit("finished");
     },
   },
 };
