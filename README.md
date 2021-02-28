@@ -1,7 +1,7 @@
 # photo-cloud
 
 
-## DEMO LIVE: http://photo-cloud-vue.s3-website-eu-west-1.amazonaws.com/
+## LIVE DEMO: http://photo-cloud-vue.s3-website-eu-west-1.amazonaws.com/
 
 
 
