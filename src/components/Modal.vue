@@ -4,7 +4,6 @@
       <h4>Enter your code. Please check your email</h4>
       <form @submit.prevent="sendCode">
         <div class="input-field">
-          <i class="fas fa-user"></i>
           <input type="text" placeholder="Code" v-model="code" />
         </div>
         <input type="submit" value="Send" class="btn solid" />

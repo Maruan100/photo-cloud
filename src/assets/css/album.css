@@ -1,0 +1,17 @@
+.create-album{
+    margin-top: 80px;
+}
+
+.goBack{
+    display: block;
+    position: relative;
+    left: 24px;
+    top: 22px;
+    cursor: pointer;
+    color: rgb(58, 58, 58);
+}
+
+.fa-arrow-left{
+    margin-right: 5px;
+    margin-top: 2px;
+}

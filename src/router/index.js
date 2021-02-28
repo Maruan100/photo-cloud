@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import AccessPage from "../views/AccessPage.vue";
 import AlbumsPage from "../views/AlbumsPage.vue";
 import AlbumDetailPage from "../views/AlbumDetailPage.vue";
 import { Auth } from "aws-amplify";
@@ -10,29 +10,20 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "AccessPage",
+    component: AccessPage,
   },
   {
     path: "/albums",
     name: "AlbumsPage",
     component: AlbumsPage,
-    meta: { requireAuth: true },
+    meta: { requiresAuth: true },
   },
   {
     path: "/album/:id",
     name: "AlbumDetailPage",
     component: AlbumDetailPage,
-    meta: { requireAuth: true },
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    meta: { requiresAuth: true },
   },
 ];
 
@@ -43,12 +34,15 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const requireAuth = to.matched.some((record) => record.meta.requireAuth);
-  const isAuthenticated = await Auth.currentUserInfo();
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const isAuthenticated = JSON.parse(localStorage.getItem('authData'))
 
-  if (requireAuth && !isAuthenticated) {
+  if (requiresAuth && !isAuthenticated) {
     next("/");
   } else {
+    if (isAuthenticated && to.name === "AccessPage") {
+      next("/albums");
+    }
     next();
   }
 });

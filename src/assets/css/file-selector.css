@@ -1,0 +1,60 @@
+.file-selector {
+  height: 400px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-selector__drop {
+  border: 1px dashed #333;
+  width: 650px;
+  height: 300px;
+}
+
+.file-selector__drop--icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.file-selector__drop--icon i {
+  font-size: 65px;
+}
+
+.file-selector__drop__text {
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+.file-selector__drop__text:nth-child(3) {
+  font-size: 12px;
+  cursor: pointer;
+  color: #4481eb;
+}
+
+.file-selector__drop--icon span {
+  display: contents;
+}
+
+.updated-file {
+  width: 650px;
+  height: 300px;
+}
+
+#upload-logo {
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+}
+
+@media only screen and (max-width: 600px) {
+   .file-selector__drop {
+    width: 300px;
+  } 
+   .updated-file {
+    width: 300px;
+  } 
+}

@@ -1,9 +1,8 @@
 <template>
-  <div class="album-container">
+  <div class="create-album">
     <form class="sign-in-form" @submit.prevent="createAlbum">
       <h2 class="title">Create album</h2>
       <div class="input-field">
-        <i class="fas fa-user"></i>
         <input type="text" placeholder="Name" v-model="albumName" />
       </div>
 

@@ -17,8 +17,8 @@ export const mutations = {
 
 export const actions = {
   async logout({ commit }) {
-    console.log(1);
     commit("SET_USER", null);
+    localStorage.removeItem('authData')
     router.push('/');
     return await Auth.signOut();
   },
@@ -29,6 +29,8 @@ export const actions = {
         password,
       });
       const userInfo = await Auth.currentUserInfo();
+      const parsed = JSON.stringify(userInfo);
+      localStorage.setItem('authData', parsed);
       commit("SET_USER", userInfo);
       return Promise.resolve();
     } catch (error) {

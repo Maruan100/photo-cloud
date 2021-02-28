@@ -1,12 +1,12 @@
 <template>
-  <div id="app" class="bg-grey-light">
+  <div id="app">
     <Nav></Nav>
     <router-view />
   </div>
 </template>
 
 <script>
-import Nav from "../src/components/Nav";
+import Nav from "../src/components/Nav.vue";
 import { mapActions } from "vuex";
 export default {
   name: "App",
@@ -14,7 +14,7 @@ export default {
     Nav,
   },
   mounted() {
-    this.authAction()
+    this.authAction();
   },
   methods: {
     ...mapActions({
